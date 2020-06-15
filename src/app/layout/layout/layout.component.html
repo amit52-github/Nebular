@@ -1,0 +1,50 @@
+<nb-layout>
+
+    <nb-layout-header>
+      <a (click)="toggleSidebar()" href="#" class="sidebar-toggle">
+        <nb-icon icon="menu-2-outline"></nb-icon>
+      </a>
+      <img src="/assets/images/siemens_logo.jpg" class="img-rounded" alt="Cinque Terre" style="width: 15%;
+      margin-left: 50px;">
+      <nb-actions size="small" style="margin-left: auto;">
+
+        <nb-action class="control-item">
+          <nb-search type="rotate-layout"></nb-search>
+        </nb-action>
+        
+        <nb-action class="user-action"  ><!--*nbIsGranted="['view', 'user']"-->
+            <!-- <nb-user shape="round" name="John Doe" title="Engineer"></nb-user> -->
+          <nb-user [nbContextMenu]="userMenu"
+                   [onlyPicture]="userPictureOnly"
+                   [name]="user"
+                   [picture]="user?.picture">
+          </nb-user>
+          
+        </nb-action>
+        <nb-action icon="power-outline"></nb-action>
+      </nb-actions>
+    </nb-layout-header>
+    <nb-layout-header subheader style="background-color: #4c4c4cfa; height: 3.rem;">
+    {{getTitle()}}
+    </nb-layout-header>
+
+
+    <nb-sidebar>
+        
+        <nb-menu [items]="items">
+          <router-outlet></router-outlet>
+        </nb-menu>
+      
+    </nb-sidebar>
+    <nb-layout-column>
+    
+      <!-- <ng-content select="router-outlet"></ng-content> -->
+      <router-outlet></router-outlet>
+    </nb-layout-column>
+  
+    <!-- <nb-layout-footer>
+    
+    </nb-layout-footer> -->
+  
+  </nb-layout>
+
